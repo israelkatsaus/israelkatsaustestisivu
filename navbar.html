@@ -1,0 +1,27 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="nav-left">
+            <!-- Päivitetty: Logo käyttää navigate-funktiota -->
+            <a href="javascript:void(0)" onclick="navigate('index')">
+                <img src="assets/LOGO.png" alt="Logo" class="nav-logo">
+            </a>
+        </div>
+
+        <div class="nav-center-right" id="nav-menu">
+            <div class="nav-links">
+                <!-- Päivitetty: Linkit käyttävät navigate-funktiota -->
+                <a href="javascript:void(0)" onclick="navigate('index')">ETUSIVU</a>
+                <a href="javascript:void(0)" onclick="navigate('archive')">ARKISTO</a>
+            </div>
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Hae uutisia..." onkeypress="handleSearch(event)">
+            </div>
+        </div>
+    </div>
+</nav>
