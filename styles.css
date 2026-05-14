@@ -1,4 +1,56 @@
-/* NAVBARIN PERUSTA */
+/* =========================================
+   1. PERUSASETUKSET & MUUTTUJAT
+   ========================================= */
+:root {
+    --bg-color: #f9f9f9;
+    --text-color: #333;
+    --card-bg: #ffffff;
+    --border-color: #ddd;
+    --footer-bg: #36454f;
+    --footer-text: #ccc;
+    --navbar-bg: #005EB8;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --text-color: #e0e0e0;
+        --card-bg: #1e1e1e;
+        --border-color: #333;
+        --navbar-bg: #005EB8;
+    }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Fira Sans', sans-serif; 
+    background-color: var(--bg-color); 
+    color: var(--text-color);
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh;
+    transition: background-color 0.3s ease;
+}
+
+a { text-decoration: none; color: inherit; }
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+    width: 100%;
+}
+
+.content-wrapper { 
+    flex: 1; 
+    padding-top: 30px; 
+    padding-bottom: 50px; 
+}
+
+/* =========================================
+   2. NAVBAR (YLÄPALKKI)
+   ========================================= */
 .navbar {
     background-color: var(--navbar-bg);
     height: 75px;
@@ -13,17 +65,16 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Työpöydällä: Logo vasen, muut oikea */
+    justify-content: space-between; 
     padding: 0 20px;
     position: relative;
 }
 
-/* LOGO JA FB-IKONI */
 .nav-brand-group {
     display: flex;
     align-items: center;
     gap: 15px;
-    flex-shrink: 0; /* Estää logoa puristumasta kasaan */
+    z-index: 1001;
 }
 
 .nav-logo {
@@ -35,31 +86,32 @@
 
 .nav-social-icon-top img {
     height: 24px;
+    width: auto;
     display: block;
 }
 
-/* OIKEA REUNA (LINKIT + HAKU) */
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-menu {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-menu a {
     color: white;
-    text-decoration: none;
+    font-weight: 400;
 }
 
 #search-input {
-    padding: 8px 12px;
+    padding: 8px 15px;
     border-radius: 20px;
     border: none;
-    width: 150px;
+    width: 180px;
+    outline: none;
 }
 
 .hamburger {
@@ -69,40 +121,92 @@
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
+    z-index: 1001;
 }
 
-/* MOBIILIMUUTOKSET (ALLE 768px) */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
+/* =========================================
+   3. ETUSIVU & ARTIKKELIT
+   ========================================= */
+#front-page-layout { 
+    display: grid; 
+    grid-template-columns: 2fr 1fr; 
+    gap: 30px; 
+}
 
-    /* Keskitystaktiikka mobiilille ilman sekoilua */
+.img-container-32 { width: 100%; aspect-ratio: 3/2; overflow: hidden; margin-bottom: 20px; border-radius: 4px; }
+.img-container-32 img { width: 100%; height: 100%; object-fit: cover; }
+
+.main-article-card h2 { margin-bottom: 10px; line-height: 1.2; cursor: pointer; }
+
+.side-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.side-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; margin-bottom: 10px; border-radius: 4px; }
+.side-card h4 { font-size: 0.85rem; line-height: 1.3; font-weight: 700; }
+
+.archive-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 25px; 
+}
+
+.news-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; margin-bottom: 10px; border-radius: 4px; }
+
+/* =========================================
+   4. ALAPALKKI (FOOTER)
+   ========================================= */
+.footer { 
+    background-color: var(--footer-bg); 
+    color: var(--footer-text); 
+    padding: 40px 0; 
+    margin-top: auto; 
+}
+
+.footer-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 20px; 
+}
+
+.footer-main-text { font-size: 1.1rem; font-weight: 600; color: #fff; }
+.footer-contact { text-align: right; font-size: 0.85rem; }
+
+/* =========================================
+   5. MOBIILIMUUTOKSET (ALLE 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+
     .nav-brand-group {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 
-    /* Piilotetaan työpöytävalikko ja haku mobiilipalkista */
+    .nav-logo { font-size: 1.1rem; }
+
+    .nav-right #search-input { display: none; } /* Piilotetaan haku yläpalkista */
+
     .nav-menu {
-        display: none; /* Avataan vain kun JS lisää .active luokan */
+        display: none;
+        flex-direction: column;
         position: absolute;
         top: 75px;
         left: 0;
         width: 100%;
         background-color: var(--navbar-bg);
-        flex-direction: column;
         padding: 20px;
         text-align: center;
         border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    .nav-menu.active {
-        display: flex;
-    }
+    .nav-menu.active { display: flex; }
 
-    #search-input {
-        display: none; /* Piilotetaan haku yläpalkista mobiilissa tilan säästämiseksi */
-    }
+    #front-page-layout { grid-template-columns: 1fr; }
+    .side-grid { grid-template-columns: 1fr 1fr; }
+    
+    .footer-container { flex-direction: column; text-align: center; gap: 20px; }
+    .footer-contact { text-align: center; }
 }
