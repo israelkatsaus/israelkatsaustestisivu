@@ -1,23 +1,27 @@
 <nav class="navbar">
     <div class="nav-container">
-        <!-- 1. Hampurilainen (näkyy vain mobiilissa) -->
-        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
-
-        <!-- 2. Logo-ryhmä -->
-        <div class="nav-brand-group">
-            <span class="nav-logo">Israel-katsaus</span>
-            <a href="https://facebook.com/..." class="nav-social-icon-top">
-                <img src="assets/facebook.png" alt="FB">
+        <button class="hamburger" id="hamburger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="nav-left">
+            <!-- Päivitetty: Logo käyttää navigate-funktiota -->
+            <a href="javascript:void(0)" onclick="navigate('index')">
+                <img src="assets/LOGO.png" alt="Logo" class="nav-logo">
             </a>
         </div>
 
-        <!-- 3. Oikea reuna -->
-        <div class="nav-right">
-            <div class="nav-menu" id="navMenu">
-                <a href="#">Etusivu</a>
-                <a href="#">Arkisto</a>
+        <div class="nav-center-right" id="nav-menu">
+            <div class="nav-links">
+                <!-- Päivitetty: Linkit käyttävät navigate-funktiota -->
+                <a href="javascript:void(0)" onclick="navigate('index')">ETUSIVU</a>
+                <a href="javascript:void(0)" onclick="navigate('archive')">ARKISTO</a>
             </div>
-            <input type="text" id="search-input" placeholder="Hae...">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Hae uutisia..." onkeypress="handleSearch(event)">
+            </div>
         </div>
     </div>
 </nav>
