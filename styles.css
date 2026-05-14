@@ -1,146 +1,108 @@
-/* NAVBAR PERUSASETUKSET (Työpöytä) */
-.navbar { 
-    background-color: var(--navbar-bg); 
-    height: 75px; 
-    position: sticky; 
-    top: 0; 
+/* NAVBARIN PERUSTA */
+.navbar {
+    background-color: var(--navbar-bg);
+    height: 75px;
+    position: sticky;
+    top: 0;
     z-index: 1000;
 }
 
-.nav-container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    height: 100%; 
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; /* Logo vasen, haku/linkit oikea */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Työpöydällä: Logo vasen, muut oikea */
     padding: 0 20px;
+    position: relative;
 }
 
+/* LOGO JA FB-IKONI */
 .nav-brand-group {
     display: flex;
     align-items: center;
     gap: 15px;
+    flex-shrink: 0; /* Estää logoa puristumasta kasaan */
 }
 
-.nav-logo { 
+.nav-logo {
     color: white;
     font-size: 1.5rem;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .nav-social-icon-top img {
     height: 24px;
-    width: auto;
     display: block;
 }
 
-.nav-right { 
-    display: flex; 
-    align-items: center; 
-    gap: 30px;
-}
-
-.nav-menu { 
-    display: flex; 
-    gap: 30px; 
-}
-
-.nav-menu a { 
-    color: white; 
-    font-weight: 400;
-    font-size: 1rem;
-}
-
-#search-input { 
-    padding: 8px 15px; 
-    border-radius: 20px; 
-    border: none; 
-    width: 180px;
-    outline: none;
-}
-
-.hamburger { 
-    display: none; /* Piilossa työpöydällä */
-    background: none; 
-    border: none; 
-    color: white; 
-    font-size: 1.8rem; 
-    cursor: pointer; 
-}
-
-/* FOOTER PERUSASETUKSET (Työpöytä) */
-.footer { 
-    background-color: var(--footer-bg); 
-    color: var(--footer-text); 
-    padding: 30px 0; 
-    margin-top: auto; 
-}
-
-.footer-container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px;
+/* OIKEA REUNA (LINKIT + HAKU) */
+.nav-right {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
-/* MOBIILINÄKYMÄ (KAIKKI MUUTOKSET TÄSSÄ) */
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu a {
+    color: white;
+    text-decoration: none;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* MOBIILIMUUTOKSET (ALLE 768px) */
 @media (max-width: 768px) {
-    .nav-container {
-        display: grid; /* Grid toimii varmemmin keskittämisessä */
-        grid-template-columns: 1fr auto 1fr;
-        align-items: center;
+    .hamburger {
+        display: block;
     }
 
-    .hamburger { 
-        display: block; 
-        grid-column: 1;
-        justify-self: start;
+    /* Keskitystaktiikka mobiilille ilman sekoilua */
+    .nav-brand-group {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .nav-brand-group { 
-        grid-column: 2;
-        justify-self: center;
-        gap: 10px;
-    }
-
-    .nav-logo { font-size: 1.1rem; }
-    .nav-social-icon-top img { height: 18px; }
-
-    .nav-right {
-        grid-column: 3;
-        justify-self: end;
-    }
-
-    /* Piilotetaan haku mobiilin yläpalkista, jotta se ei vie tilaa */
-    .nav-right #search-input {
-        display: none;
-    }
-
-    /* Mobiilivalikko joka liukuu alas */
-    .nav-menu { 
-        display: none; 
-        position: absolute; 
-        top: 75px; 
-        left: 0; 
-        width: 100%; 
-        background: var(--navbar-bg); 
-        flex-direction: column; 
-        padding: 20px; 
-        gap: 20px;
-        z-index: 999;
+    /* Piilotetaan työpöytävalikko ja haku mobiilipalkista */
+    .nav-menu {
+        display: none; /* Avataan vain kun JS lisää .active luokan */
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background-color: var(--navbar-bg);
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
         border-top: 1px solid rgba(255,255,255,0.1);
     }
 
-    .nav-menu.active { 
-        display: flex; 
+    .nav-menu.active {
+        display: flex;
     }
 
-    .footer-container { 
-        flex-direction: column; 
-        text-align: center; 
-        gap: 20px; 
+    #search-input {
+        display: none; /* Piilotetaan haku yläpalkista mobiilissa tilan säästämiseksi */
     }
 }
