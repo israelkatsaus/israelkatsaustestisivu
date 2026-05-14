@@ -1,23 +1,23 @@
 <nav class="navbar">
     <div class="nav-container">
-        <!-- 1. Hampurilainen (Vasen reuna mobiilissa) -->
-        <button id="hamburger-btn" class="hamburger">&#9776;</button>
+        <!-- 1. Hampurilainen (näkyy vain mobiilissa) -->
+        <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
 
-        <!-- 2. Logo & FB (Keskellä mobiilissa, vasemmalla työpöydällä) -->
+        <!-- 2. Logo-ryhmä -->
         <div class="nav-brand-group">
-            <a href="index.html" class="nav-logo" onclick="navigate('index'); return false;">Israel-katsaus</a>
-            <a href="https://www.facebook.com/people/Israel-katsaus/61589601305182/" target="_blank" rel="noopener noreferrer" class="nav-social-icon-top">
-                <img src="assets/facebook.png" alt="Facebook">
+            <span class="nav-logo">Israel-katsaus</span>
+            <a href="https://facebook.com/..." class="nav-social-icon-top">
+                <img src="assets/facebook.png" alt="FB">
             </a>
         </div>
 
-        <!-- 3. Linkit ja haku (Oikea reuna) -->
+        <!-- 3. Oikea reuna -->
         <div class="nav-right">
-            <div class="nav-menu" id="nav-menu">
-                <a href="index.html" onclick="navigate('index'); return false;">Etusivu</a>
-                <a href="archive.html" onclick="navigate('archive'); return false;">Arkisto</a>
+            <div class="nav-menu" id="navMenu">
+                <a href="#">Etusivu</a>
+                <a href="#">Arkisto</a>
             </div>
-            <input type="text" id="search-input" placeholder="Hae..." onkeyup="handleSearch(event)">
+            <input type="text" id="search-input" placeholder="Hae...">
         </div>
     </div>
 </nav>
