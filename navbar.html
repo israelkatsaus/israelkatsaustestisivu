@@ -1,29 +1,28 @@
 <nav class="navbar">
     <div class="nav-container">
-        <button class="hamburger" id="hamburger-btn">
+        <!-- Hampurilaispainike mobiilille -->
+        <button class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        
-        <div class="nav-left">
-            <!-- Päivitetty: Logo käyttää navigate-funktiota -->
-            <a href="javascript:void(0)" onclick="navigate('index')">
-                <img src="assets/LOGO.png" alt="Logo" class="nav-logo">
-            </a>
-        </div>
 
-        <div class="nav-center-right" id="nav-menu">
+        <!-- Sivuston Logo -->
+        <img src="assets/logo.png" alt="Israel-katsaus" class="nav-logo">
+
+        <!-- Oikea puoli (Valikko + Haku) -->
+        <div class="nav-center-right" id="navCenterRight">
             <div class="nav-links">
-                <a href="https://www.facebook.com/people/Israel-katsaus/61589601305182/" target="_blank" class="nav-fb-link">
+                <!-- Facebook-logo lisätty tähän -->
+                <a href="https://www.facebook.com/people/Israel-katsaus/61589601305182/" target="_blank" rel="noopener noreferrer" class="nav-fb-link">
                     <img src="assets/facebook.png" alt="Facebook" class="fb-icon-top">
                 </a>
-                <!-- Päivitetty: Linkit käyttävät navigate-funktiota -->
-                <a href="javascript:void(0)" onclick="navigate('index')">ETUSIVU</a>
-                <a href="javascript:void(0)" onclick="navigate('archive')">ARKISTO</a>
+                
+                <a href="index.html" onclick="navigate('index'); return false;">Etusivu</a>
+                <a href="archive.html" onclick="navigate('archive'); return false;">Arkisto</a>
             </div>
             <div class="search-container">
-                <input type="text" id="search-input" placeholder="Hae uutisia..." onkeypress="handleSearch(event)">
+                <input type="text" id="search-input" placeholder="Hae uutisia..." onkeyup="handleSearch(event)">
             </div>
         </div>
     </div>
