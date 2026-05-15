@@ -52,7 +52,7 @@ a { text-decoration: none; color: inherit; }
     padding-bottom: 50px; 
 }
 
-/* YLÄPALKKI (NAVBAR) */
+/* ==================== YLÄPALKKI (NAVBAR) ==================== */
 .navbar { 
     background-color: var(--navbar-bg); 
     height: 75px; 
@@ -71,7 +71,11 @@ a { text-decoration: none; color: inherit; }
     padding: 0 20px;
 }
 
-.nav-logo { max-height: 55px; width: auto; display: block; }
+.nav-logo { 
+    max-height: 55px; 
+    width: auto; 
+    display: block; 
+}
 
 .nav-center-right { 
     display: flex; 
@@ -81,8 +85,27 @@ a { text-decoration: none; color: inherit; }
     justify-content: flex-end;
 }
 
-.nav-links { display: flex; gap: 40px; margin-right: 40px; }
-.nav-links a { color: white; font-weight: 400; font-size: 1rem; }
+.nav-links { 
+    display: flex; 
+    gap: 40px; 
+    margin-right: 40px; 
+    align-items: center; /* Tärkeä lisäys */
+}
+
+/* Tärkeä lisäys: Linkkien tasaus */
+.nav-links a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: white;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+/* Facebook-logon erityistyyli */
+.nav-links a.facebook-link {
+    margin-right: 18px;
+}
 
 #search-input { 
     padding: 8px 15px; 
@@ -93,7 +116,7 @@ a { text-decoration: none; color: inherit; }
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* ETUSIVU LAYOUT */
+/* ==================== MUUT OSAT (ennallaan) ==================== */
 #front-page-layout { 
     display: grid; 
     grid-template-columns: 2fr 1fr; 
@@ -150,11 +173,11 @@ a { text-decoration: none; color: inherit; }
     width: 45px; 
     height: 45px; 
     cursor: pointer; 
-    filter: grayscale(0.2); /* Säädetään kuvakkeiden kirkkautta */
+    filter: grayscale(0.2);
 } 
 .divider { border-bottom: 1px solid var(--border-color); width: 60px; margin-top: 15px; }
 
-/* SIVUPALKKI (LATEST SIDEBAR) */
+/* SIVUPALKKI */
 .sidebar-main-title {
     font-size: 1.1rem;
     font-weight: 700;
@@ -184,7 +207,7 @@ a { text-decoration: none; color: inherit; }
 .footer-contact { text-align: right; line-height: 1.4; }
 .email-text { font-size: 0.8rem; }
 
-/* MOBIILINÄKYMÄ (ALLE 768px) */
+/* ==================== MOBIILINÄKYMÄ ==================== */
 .hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
 
@@ -216,19 +239,12 @@ a { text-decoration: none; color: inherit; }
     }
 
     .nav-links a {
-        display: flex;
-        align-items: center;
-        height: 100%;
-        color: white;
-        font-weight: 400;
-        font-size: 1rem;
-        text-decoration: none;
-}
+        justify-content: center; /* Keskittää tekstit mobiilissa */
+    }
 
-    /* Facebook-logon erityistyyli */
     .nav-links a.facebook-link {
-        margin-right: 18px;
-}
+        margin-right: 0; /* Ei tarvetta marginaalille mobiilissa */
+    }
 
     .search-container {
         width: 100%;
