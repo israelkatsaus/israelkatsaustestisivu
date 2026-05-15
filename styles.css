@@ -81,7 +81,31 @@ a { text-decoration: none; color: inherit; }
     justify-content: flex-end;
 }
 
-.nav-links { display: flex; gap: 40px; margin-right: 40px; }
+/* Facebook-ikonin tyylit työpöydällä */
+.nav-fb-link {
+    display: flex;
+    align-items: center;
+}
+
+.fb-icon-top {
+    height: 22px; /* Istuu kauniisti tekstin kokoon */
+    width: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.fb-icon-top:hover {
+    transform: scale(1.1);
+}
+
+/* Varmistetaan, että nav-links pitää ne samalla rivillä */
+.nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 30px; /* Tiivistetty hieman, jotta kolme objektia mahtuu nätisti ennen hakua */
+    margin-right: 40px; 
+}
+
 .nav-links a { color: white; font-weight: 400; font-size: 1rem; }
 
 #search-input { 
@@ -150,7 +174,7 @@ a { text-decoration: none; color: inherit; }
     width: 45px; 
     height: 45px; 
     cursor: pointer; 
-    filter: grayscale(0.2); /* Säädetään kuvakkeiden kirkkautta */
+    filter: grayscale(0.2); 
 } 
 .divider { border-bottom: 1px solid var(--border-color); width: 60px; margin-top: 15px; }
 
@@ -184,31 +208,6 @@ a { text-decoration: none; color: inherit; }
 .footer-contact { text-align: right; line-height: 1.4; }
 .email-text { font-size: 0.8rem; }
 
-/* Facebook-ikonin tyylit yläpalkissa */
-.nav-fb-link {
-    display: flex;
-    align-items: center;
-    padding-right: 5px; /* Pieni väli Etusivu-linkkiin */
-}
-
-.fb-icon-top {
-    height: 20px; /* Säädä tästä kokoa tarvittaessa */
-    width: auto;
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.fb-icon-top:hover {
-    transform: scale(1.1); /* Kevyt korostus vietäessä hiiri päälle */
-}
-
-/* Varmistetaan, että nav-links pitää ne samalla rivillä */
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Pitää linkkien välit vakiona */
-}
-
 /* MOBIILINÄKYMÄ (ALLE 768px) */
 .hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
@@ -228,6 +227,7 @@ a { text-decoration: none; color: inherit; }
         align-items: center;
         justify-content: center;
         text-align: center;
+        height: auto;
     }
     
     .nav-center-right.active { display: flex; }
@@ -238,11 +238,19 @@ a { text-decoration: none; color: inherit; }
         margin-right: 0; 
         margin-bottom: 30px; 
         width: 100%;
+        align-items: center;
     }
 
     .nav-links a {
         font-size: 1.2rem;
         display: block;
+        width: 100%;
+    }
+
+    /* Piilotetaan fb-logo mobiilivalikosta tai pidetään se siistinä */
+    .nav-fb-link {
+        display: flex;
+        justify-content: center;
         width: 100%;
     }
 
