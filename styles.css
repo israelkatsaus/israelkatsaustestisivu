@@ -223,7 +223,7 @@ a { text-decoration: none; color: inherit; }
         background: var(--navbar-bg); 
         flex-direction: column; 
         padding: 30px 0;
-        align-items: center;
+        align-items: center;           /* Tämä keskitetään */
         justify-content: center;
         text-align: center;
     }
@@ -236,14 +236,16 @@ a { text-decoration: none; color: inherit; }
         margin-right: 0; 
         margin-bottom: 30px; 
         width: 100%;
+        align-items: center;           /* Tärkeä lisäys */
     }
 
     .nav-links a {
-        justify-content: center; /* Keskittää tekstit mobiilissa */
+        justify-content: center;
     }
 
     .nav-links a.facebook-link {
-        margin-right: 0; /* Ei tarvetta marginaalille mobiilissa */
+        margin-right: 0;
+        margin-bottom: 10px;   /* Lisää tilaa logon alle mobiilissa */
     }
 
     .search-container {
