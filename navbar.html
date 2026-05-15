@@ -1,19 +1,21 @@
 <nav class="navbar">
     <div class="nav-container">
-        <!-- Hampurilaispainike mobiilille -->
+        <!-- Hampurilaispainike (käyttää span-elementtejä, kuten CSS:ssäsi) -->
         <button class="hamburger" onclick="toggleMenu()">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- Sivuston Logo -->
-        <img src="assets/logo.png" alt="Israel-katsaus" class="nav-logo">
+        <!-- Palautettu alkuperäinen logo-teksti ja FB-ryhmä, jotta se ei katoa -->
+        <div class="nav-logo">
+            <a href="index.html" onclick="navigate('index'); return false;" style="color: white; font-size: 1.5rem; font-weight: 700; white-space: nowrap;">Israel-katsaus</a>
+        </div>
 
-        <!-- Oikea puoli (Valikko + Haku) -->
+        <!-- Oikea puoli (Valikko + Haku). ID muutettu vastaamaan CSS:ääsi (nav-center-right) -->
         <div class="nav-center-right" id="navCenterRight">
             <div class="nav-links">
-                <!-- Facebook-logo lisätty tähän -->
+                <!-- Facebook-logo "ETUSIVU" -linkin vasemmalla puolella -->
                 <a href="https://www.facebook.com/people/Israel-katsaus/61589601305182/" target="_blank" rel="noopener noreferrer" class="nav-fb-link">
                     <img src="assets/facebook.png" alt="Facebook" class="fb-icon-top">
                 </a>
