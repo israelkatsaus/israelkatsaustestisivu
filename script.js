@@ -42,6 +42,9 @@ async function navigate(page, id = null) {
             renderSingleArticle(); // Otsikko päivittyy funktion sisällä
         }
 
+        // AKTIVOIDAAN NAVBAR UUDELLEEN: Varmistaa, että haku- ja mobiilitoiminnot pysyvät päällä sivuvaihtojen jälkeen
+        initNavbar();
+
         // KORJATTU: Suljetaan mobiilivalikko (ID päivitetty vastaamaan CSS-luokkaasi)
         const menu = document.getElementById('navCenterRight');
         if (menu) menu.classList.remove('active');
@@ -63,7 +66,7 @@ window.onpopstate = function(event) {
 
 // --- TOIMINNALLISUUDET ---
 
-// KORJATTU: Erillinen toggleMenu-funktio, jota HTML:n onclick="toggleMenu()" kutsuu
+// Erillinen toggleMenu-funktio, jota HTML:n onclick="toggleMenu()" kutsuu hätävarana
 function toggleMenu() {
     const menu = document.getElementById('navCenterRight');
     if (menu) {
@@ -72,7 +75,7 @@ function toggleMenu() {
 }
 
 function initNavbar() {
-    // KORJATTU: Haetaan hampurilaispainike luokan (.hamburger) avulla, koska ID:tä ei ole HTML-rakenteessa
+    // Haetaan hampurilaispainike luokan (.hamburger) avulla, koska ID:tä ei ole HTML-rakenteessa
     const btn = document.querySelector('.hamburger');
     const menu = document.getElementById('navCenterRight');
     
@@ -80,6 +83,7 @@ function initNavbar() {
         btn.onclick = () => menu.classList.toggle('active');
     }
     
+    // Tarkistetaan onko osoiterivillä hakuparametreja (esim. ulkopuoliselta sivulta tultaessa)
     const params = new URLSearchParams(window.location.search);
     const searchQuery = params.get('search');
     if (searchQuery && document.getElementById('search-grid')) {
@@ -101,7 +105,7 @@ async function handleSearch(event) {
         const grid = document.getElementById('search-grid');
         
         if (!grid) {
-            // Jos ei olla etusivulla, navigoidaan sinne hakuparametrin kanssa
+            // Jos ei olla etusivulla, navigoidaan sinne hakuparametrin kanssa osoiterivillä
             window.location.href = `index.html?search=${encodeURIComponent(query)}`;
         } else {
             executeSearch(query);
