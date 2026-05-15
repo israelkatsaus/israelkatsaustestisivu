@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Tumman teeman värit */
+        /* Tumman teema värit */
         --bg-color: #121212;
         --text-color: #e0e0e0;
         --card-bg: #1e1e1e;
@@ -52,13 +52,14 @@ a { text-decoration: none; color: inherit; }
     padding-bottom: 50px; 
 }
 
-/* YLÄPALKKI (NAVBAR) -STABIILI FLEXBOX-TOTEUTUS */
+/* YLÄPALKKI (NAVBAR) */
 .navbar { 
     background-color: var(--navbar-bg); 
     height: 75px; 
     position: sticky; 
     top: 0; 
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
 .nav-container { 
@@ -67,67 +68,21 @@ a { text-decoration: none; color: inherit; }
     height: 100%; 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; /* Pitää vasemman ja oikean reunan paikoillaan */
     padding: 0 20px;
 }
 
-/* Vasen reuna (Logo) */
-.nav-logo { 
-    display: flex;
-    align-items: center;
-    flex-shrink: 0; /* Estää tekstilogoa menemästä kasaan */
-}
+.nav-logo { max-height: 55px; width: auto; display: block; }
 
-.nav-logo a { 
-    color: white; 
-    font-size: 1.5rem; 
-    font-weight: 700; 
-    white-space: nowrap;
-}
-
-/* Oikea reuna (Linkit + Haku) */
 .nav-center-right { 
     display: flex; 
     align-items: center; 
-    gap: 30px;
-    flex-shrink: 0;
+    margin-left: auto; 
+    width: 60%;
+    justify-content: flex-end;
 }
 
-.nav-links { 
-    display: flex; 
-    align-items: center; 
-    gap: 25px; 
-}
-
-.nav-links a { 
-    color: white; 
-    font-weight: 400; 
-    font-size: 1rem; 
-    white-space: nowrap;
-}
-
-/* Facebook-ikoni */
-.nav-fb-link {
-    display: inline-flex;
-    align-items: center;
-}
-
-.fb-icon-top {
-    height: 22px; 
-    width: auto;
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.fb-icon-top:hover {
-    transform: scale(1.1); 
-}
-
-/* Hakukenttä */
-.search-container {
-    display: flex;
-    align-items: center;
-}
+.nav-links { display: flex; gap: 40px; margin-right: 40px; }
+.nav-links a { color: white; font-weight: 400; font-size: 1rem; }
 
 #search-input { 
     padding: 8px 15px; 
@@ -195,7 +150,7 @@ a { text-decoration: none; color: inherit; }
     width: 45px; 
     height: 45px; 
     cursor: pointer; 
-    filter: grayscale(0.2); 
+    filter: grayscale(0.2); /* Säädetään kuvakkeiden kirkkautta */
 } 
 .divider { border-bottom: 1px solid var(--border-color); width: 60px; margin-top: 15px; }
 
@@ -229,71 +184,41 @@ a { text-decoration: none; color: inherit; }
 .footer-contact { text-align: right; line-height: 1.4; }
 .email-text { font-size: 0.8rem; }
 
-/* MOBIILINÄKYMÄ (ALLE 768px) - PUHDISTETTU JA STAATTINEN */
+/* MOBIILINÄKYMÄ (ALLE 768px) */
 .hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
 
 @media (max-width: 768px) {
-    .nav-container {
-        justify-content: space-between; /* Pitää hampurilaisen vasemmalla ja logon keskellä/oikealla */
-    }
-
-    .hamburger { 
-        display: flex; 
-        z-index: 1002; 
-    }
-    
-    .nav-logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-    }
-
-    .nav-logo a {
-        font-size: 1.3rem; /* Hieman pienempi jotta mahtuu varmasti */
-    }
+    .hamburger { display: flex; position: absolute; left: 20px; }
     
     .nav-center-right { 
         display: none; 
-        position: fixed; 
+        position: absolute; 
         top: 75px; 
         left: 0; 
         width: 100%; 
-        height: calc(100vh - 75px);
         background: var(--navbar-bg); 
         flex-direction: column; 
-        padding: 40px 0;
+        padding: 30px 0;
         align-items: center;
-        justify-content: flex-start;
-        gap: 35px;
-        z-index: 1001;
+        justify-content: center;
+        text-align: center;
     }
     
-    .nav-center-right.active { 
-        display: flex; 
-    }
+    .nav-center-right.active { display: flex; }
     
     .nav-links { 
         flex-direction: column; 
-        gap: 30px; 
+        gap: 25px; 
+        margin-right: 0; 
+        margin-bottom: 30px; 
         width: 100%;
-        align-items: center;
     }
 
     .nav-links a {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         display: block;
         width: 100%;
-        text-align: center;
-    }
-
-    .nav-fb-link {
-        justify-content: center;
-    }
-
-    .fb-icon-top {
-        height: 28px; 
     }
 
     .search-container {
@@ -306,11 +231,16 @@ a { text-decoration: none; color: inherit; }
     #search-input { 
         width: 80%; 
         max-width: 300px;
-        font-size: 1rem;
-        padding: 10px 15px;
     }
     
-    /* Sivuston muut layout-muutokset mobiilissa */
+    .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15px; 
+        height: 45px; 
+    }
+    
     #front-page-layout, .article-page-layout { grid-template-columns: 1fr; }
     .side-grid { grid-template-columns: 1fr 1fr; }
     
