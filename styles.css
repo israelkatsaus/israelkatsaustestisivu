@@ -216,10 +216,19 @@ a { text-decoration: none; color: inherit; }
     }
 
     .nav-links a {
-        font-size: 1.2rem;
-        display: block;
-        width: 100%;
-    }
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: white;
+        font-weight: 400;
+        font-size: 1rem;
+        text-decoration: none;
+}
+
+    /* Facebook-logon erityistyyli */
+    .nav-links a.facebook-link {
+        margin-right: 18px;
+}
 
     .search-container {
         width: 100%;
