@@ -27,11 +27,11 @@ html {
     overflow-y: scroll;
 }
 
-body { 
-    font-family: 'Fira Sans', sans-serif; 
-    background-color: var(--bg-color); 
-    display: flex; 
-    flex-direction: column; 
+body {
+    font-family: 'Fira Sans', sans-serif;
+    background-color: var(--bg-color);
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     color: var(--text-color);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -39,60 +39,61 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
-.container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 20px; 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
     width: 100%;
 }
 
-.content-wrapper { 
-    flex: 1; 
-    padding-top: 30px; 
-    padding-bottom: 50px; 
+.content-wrapper {
+    flex: 1;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
 /* ==================== YLÄPALKKI (NAVBAR) ==================== */
-.navbar { 
-    background-color: var(--navbar-bg); 
-    height: 75px; 
-    position: sticky; 
-    top: 0; 
+.navbar {
+    background-color: var(--navbar-bg);
+    height: 75px;
+    position: sticky;
+    top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
 }
 
-.nav-container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    height: 100%; 
-    display: flex; 
-    align-items: center; 
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
     padding: 0 20px;
+    gap: 15px;                    /* Lisätty gap */
 }
 
-.nav-logo { 
-    max-height: 55px; 
-    width: auto; 
-    display: block; 
+.nav-logo {
+    max-height: 55px;
+    width: auto;
+    display: block;
 }
 
-.nav-center-right { 
-    display: flex; 
-    align-items: center; 
-    margin-left: auto; 
+.nav-center-right {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
     width: 60%;
     justify-content: flex-end;
 }
 
-.nav-links { 
-    display: flex; 
-    gap: 40px; 
-    margin-right: 40px; 
-    align-items: center; /* Tärkeä lisäys */
+.nav-links {
+    display: flex;
+    gap: 40px;
+    margin-right: 40px;
+    align-items: center;
 }
 
-/* Tärkeä lisäys: Linkkien tasaus */
+/* Linkkien tasaus */
 .nav-links a {
     display: flex;
     align-items: center;
@@ -102,25 +103,32 @@ a { text-decoration: none; color: inherit; }
     font-size: 1rem;
 }
 
-/* Facebook-logon erityistyyli */
+/* Facebook desktop (ei enää käytössä, mutta pidetään varmuuden vuoksi) */
 .nav-links a.facebook-link {
     margin-right: 18px;
 }
 
-#search-input { 
-    padding: 8px 15px; 
-    border-radius: 20px; 
-    border: none; 
+/* Uusi: Facebook-ikoni mobiiliin (oikea reuna) */
+.facebook-icon-mobile {
+    display: none;
+    align-items: center;
+    margin-left: 12px;
+}
+
+#search-input {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
     outline: none;
     width: 180px;
     background-color: rgba(255, 255, 255, 0.9);
 }
 
-/* ==================== MUUT OSAT (ennallaan) ==================== */
-#front-page-layout { 
-    display: grid; 
-    grid-template-columns: 2fr 1fr; 
-    gap: 30px; 
+/* ==================== MUUT OSAT ==================== */
+#front-page-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
     margin-top: 20px;
 }
 
@@ -136,29 +144,29 @@ a { text-decoration: none; color: inherit; }
 .side-card h4 { font-size: 0.85rem; line-height: 1.3; font-weight: 700; }
 
 /* ARKISTO & HAKU */
-.archive-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 25px; 
-    margin-top: 20px; 
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
 }
 .news-card { cursor: pointer; }
 .news-card img { width: 100%; aspect-ratio: 3/2; object-fit: cover; margin-bottom: 10px; }
 
 /* AVATTU UUTINEN */
-.article-page-layout { 
-    display: grid; 
-    grid-template-columns: 3fr 1fr; 
-    gap: 40px; 
+.article-page-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
     margin-top: 20px;
 }
 
-.article-hero-img { 
-    width: 100%; 
-    max-width: 100%; 
-    height: auto; 
-    margin-bottom: 25px; 
-    display: block; 
+.article-hero-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 25px;
+    display: block;
 }
 
 .full-article h1 { font-size: 1.8rem; margin-bottom: 20px; line-height: 1.3; }
@@ -169,12 +177,13 @@ a { text-decoration: none; color: inherit; }
 .share-box { margin-top: 1.5rem; }
 .share-box p { font-size: 0.9rem; font-weight: bold; margin-bottom: 8px; }
 .share-links { display: flex; gap: 15px; align-items: center; }
-.share-links img { 
-    width: 45px; 
-    height: 45px; 
-    cursor: pointer; 
+.share-links img {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
     filter: grayscale(0.2);
 } 
+
 .divider { border-bottom: 1px solid var(--border-color); width: 60px; margin-top: 15px; }
 
 /* SIVUPALKKI */
@@ -193,15 +202,15 @@ a { text-decoration: none; color: inherit; }
 .footer-logo { height: 50px; }
 
 .footer-copyright { text-align: center; }
-.footer-main-text { 
-    font-size: 1.1rem; 
-    font-weight: 600; 
-    color: #fff; 
-    margin-bottom: 4px; 
+.footer-main-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 4px;
 }
-.footer-sub-text { 
-    font-size: 0.75rem; 
-    opacity: 0.7; 
+.footer-sub-text {
+    font-size: 0.75rem;
+    opacity: 0.7;
 }
 
 .footer-contact { text-align: right; line-height: 1.4; }
@@ -213,39 +222,44 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 768px) {
     .hamburger { display: flex; position: absolute; left: 20px; }
-    
-    .nav-center-right { 
-        display: none; 
-        position: absolute; 
-        top: 75px; 
-        left: 0; 
-        width: 100%; 
-        background: var(--navbar-bg); 
-        flex-direction: column; 
+
+    .nav-center-right {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: var(--navbar-bg);
+        flex-direction: column;
         padding: 30px 0;
-        align-items: center;           /* Tämä keskitetään */
+        align-items: center;
         justify-content: center;
         text-align: center;
     }
-    
+   
     .nav-center-right.active { display: flex; }
-    
-    .nav-links { 
-        flex-direction: column; 
-        gap: 25px; 
-        margin-right: 0; 
-        margin-bottom: 30px; 
+   
+    .nav-links {
+        flex-direction: column;
+        gap: 25px;
+        margin-right: 0;
+        margin-bottom: 30px;
         width: 100%;
-        align-items: center;           /* Tärkeä lisäys */
+        align-items: center;
     }
 
     .nav-links a {
         justify-content: center;
     }
 
+    /* Facebook piilotetaan valikosta */
     .nav-links a.facebook-link {
-        margin-right: 0;
-        margin-bottom: 10px;   /* Lisää tilaa logon alle mobiilissa */
+        display: none;
+    }
+
+    /* Facebook näkyy oikealla reunassa */
+    .facebook-icon-mobile {
+        display: flex;
     }
 
     .search-container {
@@ -255,22 +269,22 @@ a { text-decoration: none; color: inherit; }
         padding: 0 20px;
     }
 
-    #search-input { 
-        width: 80%; 
+    #search-input {
+        width: 80%;
         max-width: 300px;
     }
-    
+   
     .nav-logo {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 15px; 
-        height: 45px; 
+        top: 15px;
+        height: 45px;
     }
-    
+   
     #front-page-layout, .article-page-layout { grid-template-columns: 1fr; }
     .side-grid { grid-template-columns: 1fr 1fr; }
-    
+   
     .footer-container { flex-direction: column; gap: 25px; text-align: center; }
     .footer-contact { text-align: center; }
 }
