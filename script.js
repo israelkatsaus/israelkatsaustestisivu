@@ -42,8 +42,8 @@ async function navigate(page, id = null) {
             renderSingleArticle(); // Otsikko päivittyy funktion sisällä
         }
 
-        // Suljetaan mobiilivalikko ja skrollataan ylös
-        const menu = document.getElementById('nav-menu');
+        // KORJATTU: Suljetaan mobiilivalikko (ID päivitetty vastaamaan CSS-luokkaasi)
+        const menu = document.getElementById('navCenterRight');
         if (menu) menu.classList.remove('active');
         window.scrollTo(0, 0);
 
@@ -63,9 +63,19 @@ window.onpopstate = function(event) {
 
 // --- TOIMINNALLISUUDET ---
 
+// KORJATTU: Erillinen toggleMenu-funktio, jota HTML:n onclick="toggleMenu()" kutsuu
+function toggleMenu() {
+    const menu = document.getElementById('navCenterRight');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
 function initNavbar() {
-    const btn = document.getElementById('hamburger-btn');
-    const menu = document.getElementById('nav-menu');
+    // KORJATTU: Haetaan hampurilaispainike luokan (.hamburger) avulla, koska ID:tä ei ole HTML-rakenteessa
+    const btn = document.querySelector('.hamburger');
+    const menu = document.getElementById('navCenterRight');
+    
     if (btn && menu) {
         btn.onclick = () => menu.classList.toggle('active');
     }
