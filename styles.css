@@ -88,7 +88,7 @@ a { text-decoration: none; color: inherit; }
 }
 
 .fb-icon-top {
-    height: 22px; /* Istuu kauniisti tekstin kokoon */
+    height: 30px; /* Istuu kauniisti tekstin kokoon */
     width: auto;
     display: block;
     transition: transform 0.2s ease;
