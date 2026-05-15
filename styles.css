@@ -21,7 +21,11 @@
     }
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 html {
     overflow-y: scroll;
@@ -37,7 +41,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-a { text-decoration: none; color: inherit; }
+a { 
+    text-decoration: none; 
+    color: inherit; 
+}
 
 .container { 
     max-width: 1200px; 
@@ -69,6 +76,7 @@ a { text-decoration: none; color: inherit; }
     display: flex; 
     align-items: center; 
     padding: 0 20px;
+    position: relative;
 }
 
 .nav-logo { 
@@ -88,7 +96,7 @@ a { text-decoration: none; color: inherit; }
 .nav-links { 
     display: flex; 
     gap: 40px; 
-    margin-right: 40px; 
+    margin-right: 40px;
     align-items: center;
 }
 
@@ -98,7 +106,7 @@ a { text-decoration: none; color: inherit; }
     font-size: 1rem; 
 }
 
-/* FACEBOOK-NAVBAR-IKONI */
+/* FACEBOOK LOGO */
 .facebook-nav-icon {
     width: 26px;
     height: 26px;
@@ -106,12 +114,13 @@ a { text-decoration: none; color: inherit; }
     display: block;
 }
 
+/* Desktop-facebook näkyviin */
 .facebook-desktop-link {
     display: flex;
     align-items: center;
 }
 
-/* Mobiililogo piilotetaan desktopissa */
+/* Mobiililogo piilossa desktopissa */
 .facebook-mobile-link {
     display: none;
 }
@@ -163,7 +172,9 @@ a { text-decoration: none; color: inherit; }
     gap: 15px; 
 }
 
-.side-card { cursor: pointer; }
+.side-card { 
+    cursor: pointer; 
+}
 
 .side-card img { 
     width: 100%; 
@@ -186,7 +197,9 @@ a { text-decoration: none; color: inherit; }
     margin-top: 20px; 
 }
 
-.news-card { cursor: pointer; }
+.news-card { 
+    cursor: pointer; 
+}
 
 .news-card img { 
     width: 100%; 
@@ -235,7 +248,9 @@ a { text-decoration: none; color: inherit; }
     margin-top: 20px; 
 }
 
-.share-box { margin-top: 1.5rem; }
+.share-box { 
+    margin-top: 1.5rem; 
+}
 
 .share-box p { 
     font-size: 0.9rem; 
@@ -299,9 +314,13 @@ a { text-decoration: none; color: inherit; }
     padding: 0 20px; 
 }
 
-.footer-logo { height: 50px; }
+.footer-logo { 
+    height: 50px; 
+}
 
-.footer-copyright { text-align: center; }
+.footer-copyright { 
+    text-align: center; 
+}
 
 .footer-main-text { 
     font-size: 1.1rem; 
@@ -320,7 +339,9 @@ a { text-decoration: none; color: inherit; }
     line-height: 1.4; 
 }
 
-.email-text { font-size: 0.8rem; }
+.email-text { 
+    font-size: 0.8rem; 
+}
 
 /* MOBIILINÄKYMÄ */
 .hamburger { 
@@ -398,12 +419,12 @@ a { text-decoration: none; color: inherit; }
         height: 45px; 
     }
 
-    /* Desktop-facebook pois mobiilissa */
+    /* Piilotetaan desktop-facebook mobiilissa */
     .facebook-desktop-link {
-        display: none;
+        display: none !important;
     }
 
-    /* Facebook oikeaan reunaan */
+    /* Näytetään mobiili-facebook oikeassa reunassa */
     .facebook-mobile-link {
         display: block;
         position: absolute;
@@ -418,21 +439,21 @@ a { text-decoration: none; color: inherit; }
     }
     
     #front-page-layout,
-    .article-page-layout {
-        grid-template-columns: 1fr;
+    .article-page-layout { 
+        grid-template-columns: 1fr; 
     }
 
-    .side-grid {
-        grid-template-columns: 1fr 1fr;
+    .side-grid { 
+        grid-template-columns: 1fr 1fr; 
     }
     
-    .footer-container {
-        flex-direction: column;
-        gap: 25px;
-        text-align: center;
+    .footer-container { 
+        flex-direction: column; 
+        gap: 25px; 
+        text-align: center; 
     }
 
-    .footer-contact {
-        text-align: center;
+    .footer-contact { 
+        text-align: center; 
     }
 }
