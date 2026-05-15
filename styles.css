@@ -184,6 +184,31 @@ a { text-decoration: none; color: inherit; }
 .footer-contact { text-align: right; line-height: 1.4; }
 .email-text { font-size: 0.8rem; }
 
+/* Facebook-ikonin tyylit yläpalkissa */
+.nav-fb-link {
+    display: flex;
+    align-items: center;
+    padding-right: 5px; /* Pieni väli Etusivu-linkkiin */
+}
+
+.fb-icon-top {
+    height: 20px; /* Säädä tästä kokoa tarvittaessa */
+    width: auto;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.fb-icon-top:hover {
+    transform: scale(1.1); /* Kevyt korostus vietäessä hiiri päälle */
+}
+
+/* Varmistetaan, että nav-links pitää ne samalla rivillä */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Pitää linkkien välit vakiona */
+}
+
 /* MOBIILINÄKYMÄ (ALLE 768px) */
 .hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
