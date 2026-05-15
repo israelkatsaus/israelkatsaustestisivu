@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Israel-katsaus</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <meta name="description" content="Uutiset ja selkeät tilannekatsaukset Israelista. Seuraamme myös antisemitismiä ja tuomme esiin uutisia, joita et muualta välttämättä löydä">
+    
+    <link rel="icon" type="image/png" href="assets/favicon-google.png" sizes="48x48">
+
+    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/favicon-dark.png">
+
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
 </head>
@@ -26,23 +32,27 @@
 
     <div id="footer-placeholder"></div>
 
-    <!-- Ladattavat skriptit -->
     <script src="script.js"></script>
     <script>
-        // Suoritetaan heti kun sivu ja sen osat ovat valmiit
         window.onload = () => {
-            // Ladataan navbar ja suoritetaan initNavbar vasta kun lataus on VALMIS
+            // Ladataan komponentit
             loadComponent('navbar-placeholder', 'navbar.html', () => {
-                if (typeof initNavbar === 'function') {
-                    initNavbar();
+                initNavbar();
+                
+                // Tarkistetaan heti latauksen jälkeen, onko URL:ssa hakusana
+                const params = new URLSearchParams(window.location.search);
+                const query = params.get('search');
+                if (query) {
+                    executeSearch(query);
+                    // Täytetään hakukenttä näkyviin
+                    const searchInput = document.getElementById('search-input');
+                    if (searchInput) searchInput.value = query;
+                } else {
+                    renderFrontPage();
                 }
             });
             
-            // Ladataan footer
             loadComponent('footer-placeholder', 'footer.html');
-            
-            // Renderöidään etusivun uutiset
-            renderFrontPage();
         };
     </script>
 </body>
