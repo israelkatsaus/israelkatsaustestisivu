@@ -69,7 +69,7 @@ a { text-decoration: none; color: inherit; }
     display: flex;
     align-items: center;
     padding: 0 20px;
-    gap: 15px;                    /* Lisätty gap */
+    position: relative;
 }
 
 .nav-logo {
@@ -112,7 +112,13 @@ a { text-decoration: none; color: inherit; }
 .facebook-icon-mobile {
     display: none;
     align-items: center;
-    margin-left: 12px;
+    margin-left: auto;            /* Tämä työntää sen oikealle */
+    margin-right: 8px;
+}
+
+    .facebook-icon-mobile img {
+    height: 32px;
+    width: auto;
 }
 
 #search-input {
@@ -221,7 +227,12 @@ a { text-decoration: none; color: inherit; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
 
 @media (max-width: 768px) {
-    .hamburger { display: flex; position: absolute; left: 20px; }
+    .hamburger { 
+        display: flex; 
+        position: absolute; 
+        left: 20px; 
+        z-index: 10;
+    }
 
     .nav-center-right {
         display: none;
@@ -235,52 +246,34 @@ a { text-decoration: none; color: inherit; }
         align-items: center;
         justify-content: center;
         text-align: center;
+        z-index: 5;
     }
-   
+
     .nav-center-right.active { display: flex; }
-   
-    .nav-links {
-        flex-direction: column;
-        gap: 25px;
-        margin-right: 0;
-        margin-bottom: 30px;
-        width: 100%;
-        align-items: center;
-    }
 
-    .nav-links a {
-        justify-content: center;
-    }
-
-    /* Facebook piilotetaan valikosta */
-    .nav-links a.facebook-link {
-        display: none;
-    }
-
-    /* Facebook näkyy oikealla reunassa */
+    /* Facebook näkyviin oikealle mobiilissa */
     .facebook-icon-mobile {
         display: flex;
     }
 
-    .search-container {
+    /* Muut tyylit... */
+    .nav-links {
+        flex-direction: column;
+        gap: 25px;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        padding: 0 20px;
+        align-items: center;
     }
 
-    #search-input {
-        width: 80%;
-        max-width: 300px;
-    }
-   
     .nav-logo {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         top: 15px;
         height: 45px;
+        z-index: 10;
     }
+
+}
    
     #front-page-layout, .article-page-layout { grid-template-columns: 1fr; }
     .side-grid { grid-template-columns: 1fr 1fr; }
