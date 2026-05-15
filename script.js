@@ -1,3 +1,29 @@
+// --- FAVICONIN HALLINTA ---
+
+/**
+ * Vaihtaa faviconin selaimen teeman mukaan (Dark/Light mode).
+ * Käytetään aikaleimaa (?v=) välimuistin ohittamiseen.
+ */
+function updateFavicon() {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const favicon = document.querySelector('link[rel="icon"]');
+    
+    if (favicon) {
+        const version = new Date().getTime(); 
+        if (isDarkMode) {
+            favicon.href = `assets/favicon-light.png?v=${version}`;
+        } else {
+            favicon.href = `assets/favicon-dark.png?v=${version}`;
+        }
+    }
+}
+
+// Suoritetaan heti ja kuunnellaan muutoksia
+updateFavicon();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+
+// --- KOMPONENTTIEN LATAUS ---
+
 // Lataa komponentit (Navbar/Footer) - ladataan vain kerran sivuston alussa
 async function loadComponent(id, file, callback) {
     const resp = await fetch(file);
@@ -42,13 +68,13 @@ async function navigate(page, id = null) {
             renderSingleArticle(); // Otsikko päivittyy funktion sisällä
         }
 
-        // AKTIVOIDAAN NAVBAR UUDELLEEN: Varmistaa, että haku- ja mobiilitoiminnot pysyvät päällä sivuvaihtojen jälkeen
-        initNavbar();
-
-        // KORJATTU: Suljetaan mobiilivalikko (ID päivitetty vastaamaan CSS-luokkaasi)
-        const menu = document.getElementById('navCenterRight');
+        // Suljetaan mobiilivalikko ja skrollataan ylös
+        const menu = document.getElementById('nav-menu');
         if (menu) menu.classList.remove('active');
         window.scrollTo(0, 0);
+
+        // Varmistetaan faviconin tila sivun vaihdon yhteydessä
+        updateFavicon();
 
     } catch (err) {
         console.error("Sivun lataus epäonnistui:", err);
@@ -66,24 +92,13 @@ window.onpopstate = function(event) {
 
 // --- TOIMINNALLISUUDET ---
 
-// Erillinen toggleMenu-funktio, jota HTML:n onclick="toggleMenu()" kutsuu hätävarana
-function toggleMenu() {
-    const menu = document.getElementById('navCenterRight');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
 function initNavbar() {
-    // Haetaan hampurilaispainike luokan (.hamburger) avulla, koska ID:tä ei ole HTML-rakenteessa
-    const btn = document.querySelector('.hamburger');
-    const menu = document.getElementById('navCenterRight');
-    
+    const btn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('nav-menu');
     if (btn && menu) {
         btn.onclick = () => menu.classList.toggle('active');
     }
     
-    // Tarkistetaan onko osoiterivillä hakuparametreja (esim. ulkopuoliselta sivulta tultaessa)
     const params = new URLSearchParams(window.location.search);
     const searchQuery = params.get('search');
     if (searchQuery && document.getElementById('search-grid')) {
@@ -105,7 +120,7 @@ async function handleSearch(event) {
         const grid = document.getElementById('search-grid');
         
         if (!grid) {
-            // Jos ei olla etusivulla, navigoidaan sinne hakuparametrin kanssa osoiterivillä
+            // Jos ei olla etusivulla, navigoidaan sinne hakuparametrin kanssa
             window.location.href = `index.html?search=${encodeURIComponent(query)}`;
         } else {
             executeSearch(query);
