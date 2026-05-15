@@ -14,11 +14,6 @@
 
         <div class="nav-center-right" id="nav-menu">
             <div class="nav-links">
-                <!-- Facebook-logo -->
-                <a href="https://www.facebook.com/israelkatsaus" target="_blank" class="facebook-link">
-                    <img src="assets/facebook.png" alt="Facebook" style="height: 42px; width: auto;">
-                </a>
-                
                 <a href="javascript:void(0)" onclick="navigate('index')">ETUSIVU</a>
                 <a href="javascript:void(0)" onclick="navigate('archive')">ARKISTO</a>
             </div>
@@ -26,5 +21,10 @@
                 <input type="text" id="search-input" placeholder="Hae uutisia..." onkeypress="handleSearch(event)">
             </div>
         </div>
+
+        <!-- Facebook-logo aina näkyviin mobiilissa oikealle -->
+        <a href="https://www.facebook.com/israelkatsaus" target="_blank" class="facebook-icon-mobile">
+            <img src="assets/facebook.png" alt="Facebook" style="height: 32px; width: auto;">
+        </a>
     </div>
 </nav>
