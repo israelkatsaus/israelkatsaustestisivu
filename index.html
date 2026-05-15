@@ -26,11 +26,22 @@
 
     <div id="footer-placeholder"></div>
 
+    <!-- Ladattavat skriptit -->
     <script src="script.js"></script>
     <script>
+        // Suoritetaan heti kun sivu ja sen osat ovat valmiit
         window.onload = () => {
-            loadComponent('navbar-placeholder', 'navbar.html', initNavbar);
+            // Ladataan navbar ja suoritetaan initNavbar vasta kun lataus on VALMIS
+            loadComponent('navbar-placeholder', 'navbar.html', () => {
+                if (typeof initNavbar === 'function') {
+                    initNavbar();
+                }
+            });
+            
+            // Ladataan footer
             loadComponent('footer-placeholder', 'footer.html');
+            
+            // Renderöidään etusivun uutiset
             renderFrontPage();
         };
     </script>
