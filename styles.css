@@ -52,14 +52,13 @@ a { text-decoration: none; color: inherit; }
     padding-bottom: 50px; 
 }
 
-/* YLÄPALKKI (NAVBAR) - KORJATTU ASETTELU */
+/* YLÄPALKKI (NAVBAR) -STABIILI FLEXBOX-TOTEUTUS */
 .navbar { 
     background-color: var(--navbar-bg); 
     height: 75px; 
     position: sticky; 
     top: 0; 
     z-index: 1000;
-    transition: background-color 0.3s ease;
 }
 
 .nav-container { 
@@ -68,14 +67,15 @@ a { text-decoration: none; color: inherit; }
     height: 100%; 
     display: flex; 
     align-items: center; 
-    justify-content: space-between; /* Logo vasemmalle, valikko oikealle */
+    justify-content: space-between; /* Pitää vasemman ja oikean reunan paikoillaan */
     padding: 0 20px;
-    position: relative;
 }
 
+/* Vasen reuna (Logo) */
 .nav-logo { 
     display: flex;
     align-items: center;
+    flex-shrink: 0; /* Estää tekstilogoa menemästä kasaan */
 }
 
 .nav-logo a { 
@@ -85,10 +85,12 @@ a { text-decoration: none; color: inherit; }
     white-space: nowrap;
 }
 
+/* Oikea reuna (Linkit + Haku) */
 .nav-center-right { 
     display: flex; 
     align-items: center; 
     gap: 30px;
+    flex-shrink: 0;
 }
 
 .nav-links { 
@@ -104,7 +106,7 @@ a { text-decoration: none; color: inherit; }
     white-space: nowrap;
 }
 
-/* Facebook-ikonin tyylit */
+/* Facebook-ikoni */
 .nav-fb-link {
     display: inline-flex;
     align-items: center;
@@ -119,6 +121,12 @@ a { text-decoration: none; color: inherit; }
 
 .fb-icon-top:hover {
     transform: scale(1.1); 
+}
+
+/* Hakukenttä */
+.search-container {
+    display: flex;
+    align-items: center;
 }
 
 #search-input { 
@@ -221,12 +229,30 @@ a { text-decoration: none; color: inherit; }
 .footer-contact { text-align: right; line-height: 1.4; }
 .email-text { font-size: 0.8rem; }
 
-/* MOBIILINÄKYMÄ (ALLE 768px) - KORJATTU PÄÄLLEKKÄISYYS */
+/* MOBIILINÄKYMÄ (ALLE 768px) - PUHDISTETTU JA STAATTINEN */
 .hamburger { display: none; background: none; border: none; flex-direction: column; gap: 5px; cursor: pointer; }
 .hamburger span { width: 25px; height: 3px; background-color: white; }
 
 @media (max-width: 768px) {
-    .hamburger { display: flex; z-index: 1002; }
+    .nav-container {
+        justify-content: space-between; /* Pitää hampurilaisen vasemmalla ja logon keskellä/oikealla */
+    }
+
+    .hamburger { 
+        display: flex; 
+        z-index: 1002; 
+    }
+    
+    .nav-logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+
+    .nav-logo a {
+        font-size: 1.3rem; /* Hieman pienempi jotta mahtuu varmasti */
+    }
     
     .nav-center-right { 
         display: none; 
@@ -244,13 +270,13 @@ a { text-decoration: none; color: inherit; }
         z-index: 1001;
     }
     
-    .nav-center-right.active { display: flex; }
+    .nav-center-right.active { 
+        display: flex; 
+    }
     
     .nav-links { 
         flex-direction: column; 
         gap: 30px; 
-        margin-right: 0; 
-        margin-bottom: 0; 
         width: 100%;
         align-items: center;
     }
@@ -264,11 +290,10 @@ a { text-decoration: none; color: inherit; }
 
     .nav-fb-link {
         justify-content: center;
-        padding-right: 0;
     }
 
     .fb-icon-top {
-        height: 28px; /* Hieman isompi kuvake mobiilivalikossa */
+        height: 28px; 
     }
 
     .search-container {
@@ -285,13 +310,7 @@ a { text-decoration: none; color: inherit; }
         padding: 10px 15px;
     }
     
-    .nav-logo {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 1000;
-    }
-    
+    /* Sivuston muut layout-muutokset mobiilissa */
     #front-page-layout, .article-page-layout { grid-template-columns: 1fr; }
     .side-grid { grid-template-columns: 1fr 1fr; }
     
