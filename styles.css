@@ -297,7 +297,7 @@ a {
 }
 
 .divider { 
-    border-bottom: 1px solid var(--border-color); 
+    border-bottom: 1px solid #005EB8;
     width: 60px; 
     margin-top: 15px; 
 }
