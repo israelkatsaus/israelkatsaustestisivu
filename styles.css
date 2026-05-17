@@ -302,6 +302,10 @@ a {
     margin-top: 15px; 
 }
 
+.share-box .divider {
+    margin-bottom: 15px;
+}
+
 /* SIVUPALKKI */
 .sidebar-main-title {
     font-size: 1.1rem;
