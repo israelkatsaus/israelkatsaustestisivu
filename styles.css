@@ -236,6 +236,20 @@ a {
     line-height: 1.6; 
 }
 
+/* UUTISEN META */
+.article-meta {
+    font-style: italic;
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 12px;
+}
+
+/* Tyhjää tilaa ennen leipätekstiä */
+.article-body-spacing {
+    height: 28px;
+}
+
 .article-body p { 
     margin-bottom: 1.5rem; 
     line-height: 1.6; 
