@@ -244,9 +244,9 @@ async function renderSingleArticle() {
                 <!-- META -->
                 <div class="article-meta">
 
-                    <div>⏲ ${formattedDate}</div>
+                    <div>| ${formattedDate}</div>
 
-                    <div>🖋 Timo Yli-Hietanen</div>
+                    <div>| Timo Yli-Hietanen</div>
 
                 </div>
 
