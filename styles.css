@@ -239,10 +239,11 @@ a {
 /* UUTISEN META */
 .article-meta {
     font-style: italic;
-    font-weight: normal;
-    font-size: 0.9rem;
+    font-weight: 300;
+    font-size: 0.75rem;
     color: #777;
-    margin-top: 12px;
+    margin-top: 6px;
+    margin-bottom: 18px;
 }
 
 /* Tyhjää tilaa ennen leipätekstiä */
