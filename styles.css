@@ -249,6 +249,13 @@ a {
     display: block;
 }
 
+.article-meta-divider {
+    width: 60px;
+    height: 1px;
+    background-color: #005EB8;
+    margin-top: 12px;
+}
+
 /* Tyhjää tilaa ennen leipätekstiä */
 .article-body-spacing {
     height: 28px;
