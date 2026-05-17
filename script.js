@@ -263,6 +263,8 @@ async function renderSingleArticle() {
                 <!-- JAKONAPIT -->
                 <div class="share-box">
 
+                <div class="divider"></div>
+
                     <p>JAA UUTINEN</p>
 
                     <div class="share-links">
@@ -281,9 +283,7 @@ async function renderSingleArticle() {
 
                     </div>
 
-                    <div class="divider"></div>
-
-                </div>
+                    </div>
             `;
         }
     }
