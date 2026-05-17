@@ -250,6 +250,8 @@ async function renderSingleArticle() {
 
                 </div>
 
+                <div class="article-meta-divider"></div>
+
                 <!-- TYHJÄ VÄLI -->
                 <div class="article-body-spacing"></div>
 
