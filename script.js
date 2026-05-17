@@ -238,13 +238,16 @@ async function renderSingleArticle() {
                     ${article.excerpt}
                 </div>
 
-                <!-- META -->
-                <div class="article-meta">
-                ${formattedDate} - Timo Yli-Hietanen
-                </div>
-
                 <!-- KUVA -->
                 <img src="${article.image}" class="article-hero-img">
+
+                <!-- META -->
+                <div class="article-meta">
+
+                    <div>⏲ ${formattedDate}</div>
+
+                    <div>🖋 Timo Yli-Hietanen</div>
+
                 </div>
 
                 <!-- TYHJÄ VÄLI -->
