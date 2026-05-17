@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Tumman teema värit */
+        /* Tumman teeman värit */
         --bg-color: #121212;
         --text-color: #e0e0e0;
         --card-bg: #1e1e1e;
@@ -77,26 +77,32 @@ a {
     align-items: center; 
     padding: 0 20px;
     position: relative;
+    justify-content: space-between;
 }
 
 .nav-logo { 
-    max-height: 55px; 
-    width: auto; 
-    display: block; 
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.nav-logo a {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
 .nav-center-right { 
     display: flex; 
     align-items: center; 
-    margin-left: auto; 
-    width: 60%;
-    justify-content: flex-end;
+    gap: 30px;
+    flex-shrink: 0;
 }
 
 .nav-links { 
     display: flex; 
-    gap: 40px; 
-    margin-right: 40px;
+    gap: 30px; 
     align-items: center;
 }
 
@@ -104,14 +110,20 @@ a {
     color: white; 
     font-weight: 400; 
     font-size: 1rem; 
+    white-space: nowrap;
 }
 
 /* FACEBOOK LOGO */
 .facebook-nav-icon {
-    width: 45px;
-    height: 45px;
+    width: 32px;
+    height: 32px;
     object-fit: contain;
     display: block;
+    transition: transform 0.2s ease;
+}
+
+.facebook-nav-icon:hover {
+    transform: scale(1.08);
 }
 
 /* Desktop-facebook näkyviin */
@@ -220,13 +232,13 @@ a {
     width: 100%; 
     max-width: 100%; 
     height: auto; 
-    margin-bottom: 25px; 
+    margin-bottom: 20px; 
     display: block; 
 }
 
 .full-article h1 { 
     font-size: 1.8rem; 
-    margin-bottom: 20px; 
+    margin-bottom: 15px; 
     line-height: 1.3; 
 }
 
@@ -236,16 +248,18 @@ a {
     line-height: 1.6; 
 }
 
+/* Päivämäärän ja kirjoittajan tyylit kuvan alla */
+.article-meta {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.75;
+    margin-bottom: 25px;
+    font-weight: 500;
+}
+
 .article-body p { 
     margin-bottom: 1.5rem; 
     line-height: 1.6; 
-}
-
-.article-author { 
-    font-style: italic; 
-    font-weight: bold; 
-    font-size: 0.85rem; 
-    margin-top: 20px; 
 }
 
 .share-box { 
@@ -415,8 +429,12 @@ a {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 15px; 
-        height: 45px; 
+        top: 22px; 
+        height: auto; 
+    }
+    
+    .nav-logo a {
+        font-size: 1.3rem;
     }
 
     /* Piilotetaan desktop-facebook mobiilissa */
@@ -429,13 +447,13 @@ a {
         display: block;
         position: absolute;
         right: 20px;
-        top: 18px;
+        top: 20px;
         z-index: 1001;
     }
 
     .facebook-nav-icon {
-        width: 40px;
-        height: 40px;
+        width: 35px;
+        height: 35px;
     }
     
     #front-page-layout,
