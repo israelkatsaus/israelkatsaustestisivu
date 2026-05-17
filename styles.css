@@ -250,11 +250,13 @@ a {
 
 /* Päivämäärän ja kirjoittajan tyylit kuvan alla */
 .article-meta {
-    font-size: 0.85rem;
+    font-size: 0.8rem;       /* Muutettu hieman pienemmäksi (oli 0.85rem) */
+    font-style: italic;      /* Kursivointi lisätty */
     color: var(--text-color);
-    opacity: 0.75;
-    margin-bottom: 25px;
-    font-weight: 500;
+    opacity: 0.7;            /* Hieman himmeämpi ja tyylikkäämpi teksti */
+    margin-bottom: 3rem;     /* Lisätty reilusti tilaa (vastaa kahta tyhjää riviä) ennen leipätekstiä */
+    font-weight: 400;
+    display: block;
 }
 
 .article-body p { 
