@@ -210,41 +210,97 @@ async function renderArchive() {
 async function renderSingleArticle() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
+
     const articles = await getArticles();
     const article = articles.find(a => a.id == id);
 
     if (article) {
+
         document.title = article.title;
+
         const shareUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent(article.title);
 
+        /* Päivämäärän muotoilu */
+        const formattedDate = new Date(article.date).toLocaleDateString('fi-FI');
+
         const contentArea = document.getElementById('article-content');
+
         if (contentArea) {
+
             contentArea.innerHTML = `
-                <img src="${article.image}" class="article-hero-img">
+
+                <!-- OTSIKKO -->
                 <h1>${article.title}</h1>
-                <div class="article-ingress">${article.excerpt}</div>
-                <div class="article-body">${article.content}</div>
-                <div class="article-author">Israel-katsaus/toimitus</div>
+
+                <!-- INGRESSI -->
+                <div class="article-ingress">
+                    ${article.excerpt}
+                </div>
+
+                <!-- KUVA -->
+                <img src="${article.image}" class="article-hero-img">
+
+                <!-- META -->
+                <div class="article-meta">
+                    ${formattedDate} - Timo Yli-Hietanen
+                </div>
+
+                <!-- TYHJÄ VÄLI -->
+                <div class="article-body-spacing"></div>
+
+                <!-- LEIPÄTEKSTI -->
+                <div class="article-body">
+                    ${article.content}
+                </div>
+
+                <!-- JAKONAPIT -->
                 <div class="share-box">
+
                     <p>JAA UUTINEN</p>
+
                     <div class="share-links">
-                        <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank"><img src="images/facebook.png"></a>
-                        <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}" target="_blank"><img src="images/x.png"></a>
-                        <a href="https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}" target="_blank"><img src="images/whatsapp.png"></a>
+
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=${shareUrl}" target="_blank">
+                            <img src="images/facebook.png">
+                        </a>
+
+                        <a href="https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}" target="_blank">
+                            <img src="images/x.png">
+                        </a>
+
+                        <a href="https://api.whatsapp.com/send?text=${shareTitle}%20${shareUrl}" target="_blank">
+                            <img src="images/whatsapp.png">
+                        </a>
+
                     </div>
+
                     <div class="divider"></div>
+
                 </div>
             `;
         }
     }
 
+    /* SIDEBAR */
+
     const sidebarList = document.getElementById('latest-sidebar-list');
+
     if (sidebarList) {
-        sidebarList.innerHTML = articles.slice(0, 8).map(art => `
-            <div class="sidebar-item" onclick="navigate('uutinen', ${art.id})">
-                <p>${art.title}</p>
-            </div>
-        `).join('');
+
+        sidebarList.innerHTML = articles
+            .slice(0, 8)
+            .map(art => `
+
+                <div 
+                    class="sidebar-item"
+                    onclick="navigate('uutinen', ${art.id})"
+                >
+
+                    <p>${art.title}</p>
+
+                </div>
+
+            `).join('');
     }
 }
