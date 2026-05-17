@@ -68,7 +68,7 @@ async function navigate(page, id = null) {
             renderSingleArticle(); // Otsikko päivittyy funktion sisällä
         }
 
-        // Suljetaan mobiilivalikko ja skrollataan ylös
+        // Suljetaan mobiilivalikko and skrollataan ylös
         const menu = document.getElementById('nav-menu');
         if (menu) menu.classList.remove('active');
         window.scrollTo(0, 0);
@@ -218,14 +218,31 @@ async function renderSingleArticle() {
         const shareUrl = encodeURIComponent(window.location.href);
         const shareTitle = encodeURIComponent(article.title);
 
+        // Muunnetaan JSON-päivämäärä suomalaiseen muotoon (pp.kk.vvvv)
+        const dateObj = new Date(article.date);
+        const finnishDate = dateObj.toLocaleDateString('fi-FI', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+
         const contentArea = document.getElementById('article-content');
         if (contentArea) {
             contentArea.innerHTML = `
-                <img src="${article.image}" class="article-hero-img">
+                <!-- 1. Otsikko ja ingressi ylimpänä -->
                 <h1>${article.title}</h1>
                 <div class="article-ingress">${article.excerpt}</div>
+                
+                <!-- 2. Uutisen pääkuva -->
+                <img src="${article.image}" class="article-hero-img">
+                
+                <!-- 3. Päivämäärä ja kirjoittaja kuvan alle siististi -->
+                <div class="article-meta">${finnishDate} - ${article.author || 'Timo Yli-Hietanen'}</div>
+                
+                <!-- 4. Leipäteksti -->
                 <div class="article-body">${article.content}</div>
-                <div class="article-author">Israel-katsaus/toimitus</div>
+                
+                <!-- 5. Sometyökalut -->
                 <div class="share-box">
                     <p>JAA UUTINEN</p>
                     <div class="share-links">
