@@ -1,59 +1,185 @@
 <!DOCTYPE html>
 <html lang="fi">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Israel-katsaus</title>
 
-    <meta name="description" content="Uutiset ja selkeät tilannekatsaukset Israelista. Seuraamme myös antisemitismiä ja tuomme esiin uutisia, joita et muualta välttämättä löydä">
-    
-    <link rel="icon" type="image/png" href="assets/favicon-google.png" sizes="48x48">
+    <meta
+        name="description"
+        content="Israel-uutiset Lähi-idästä ja maailmalta"
+    >
 
-    <link id="dynamic-favicon" rel="icon" type="image/png" href="assets/favicon-dark.png">
+    <!-- OPEN GRAPH -->
 
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+    <meta
+        property="og:type"
+        content="article"
+    >
+
+    <meta
+        property="og:site_name"
+        content="Israel-katsaus"
+    >
+
+    <meta
+        property="og:title"
+        content="Israel-katsaus"
+    >
+
+    <meta
+        property="og:description"
+        content="Israel-uutiset Lähi-idästä ja maailmalta"
+    >
+
+    <!-- VAIHDA DOMAIN JA KUVA -->
+
+    <meta
+        property="og:image"
+        content="https://github.com/israelkatsaus/israelkatsaus.github.io/blob/main/assets/LOGO.png?raw=true"
+    >
+
+    <!-- TWITTER / X -->
+
+    <meta
+        property="twitter:card"
+        content="summary_large_image"
+    >
+
+    <!-- FAVICON -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/favicon-google.png"
+        sizes="48x48"
+    >
+
+    <link
+        id="dynamic-favicon"
+        rel="icon"
+        type="image/png"
+        href="assets/favicon-dark.png"
+    >
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <!-- FONTIT -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,700&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
+
 <body>
+
     <div id="navbar-placeholder"></div>
 
     <main class="container content-wrapper">
-        <div id="search-results-container" style="display:none;">
-            <h2 class="section-title">Hakutulokset</h2>
-            <div id="search-grid" class="archive-grid"></div>
+
+        <div
+            id="search-results-container"
+            style="display:none;"
+        >
+
+            <h2 class="section-title">
+                Hakutulokset
+            </h2>
+
+            <div
+                id="search-grid"
+                class="archive-grid"
+            ></div>
+
             <hr>
+
         </div>
 
         <div id="front-page-layout">
+
             <div id="main-article-area"></div>
-            <div id="side-articles-area" class="side-grid"></div>
+
+            <div
+                id="side-articles-area"
+                class="side-grid"
+            ></div>
+
         </div>
+
     </main>
 
     <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
+
     <script>
+
         window.onload = () => {
+
             // Ladataan komponentit
-            loadComponent('navbar-placeholder', 'navbar.html', () => {
-                initNavbar();
+
+            loadComponent(
+                'navbar-placeholder',
+                'navbar.html',
+                () => {
+
+                    initNavbar();
                 
-                // Tarkistetaan heti latauksen jälkeen, onko URL:ssa hakusana
-                const params = new URLSearchParams(window.location.search);
-                const query = params.get('search');
-                if (query) {
-                    executeSearch(query);
-                    // Täytetään hakukenttä näkyviin
-                    const searchInput = document.getElementById('search-input');
-                    if (searchInput) searchInput.value = query;
-                } else {
-                    renderFrontPage();
+                    // Tarkistetaan heti latauksen jälkeen,
+                    // onko URL:ssa hakusana
+
+                    const params =
+                        new URLSearchParams(
+                            window.location.search
+                        );
+
+                    const query =
+                        params.get('search');
+
+                    if (query) {
+
+                        executeSearch(query);
+
+                        // Täytetään hakukenttä näkyviin
+
+                        const searchInput =
+                            document.getElementById(
+                                'search-input'
+                            );
+
+                        if (searchInput) {
+
+                            searchInput.value = query;
+                        }
+
+                    } else {
+
+                        renderFrontPage();
+                    }
                 }
-            });
+            );
             
-            loadComponent('footer-placeholder', 'footer.html');
+            loadComponent(
+                'footer-placeholder',
+                'footer.html'
+            );
         };
+
     </script>
+
 </body>
 </html>
